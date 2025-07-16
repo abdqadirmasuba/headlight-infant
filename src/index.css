@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 210 100% 40%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 45 100% 62%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 45 100% 62%;
+    --accent-foreground: 215 25% 27%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 40%;
+
+    --radius: 0.75rem;
+
+    /* School brand colors from badge */
+    --school-blue: 210 100% 40%;
+    --school-light-blue: 200 100% 85%;
+    --school-yellow: 45 100% 62%;
+    --school-navy: 215 25% 27%;
+    --school-white: 0 0% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--school-blue)), hsl(var(--school-light-blue)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--school-yellow)), hsl(var(--school-blue)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--school-blue) / 0.95), hsl(var(--school-navy) / 0.9));
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--school-blue) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--school-yellow) / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 25% 15%;
+    --foreground: 0 0% 98%;
+
+    --card: 215 25% 18%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 215 25% 18%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 200 100% 70%;
+    --primary-foreground: 215 25% 15%;
+
+    --secondary: 45 100% 50%;
+    --secondary-foreground: 215 25% 15%;
+
+    --muted: 215 25% 22%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 45 100% 50%;
+    --accent-foreground: 215 25% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 25% 25%;
+    --input: 215 25% 25%;
+    --ring: 200 100% 70%;
+
+    /* Dark mode school colors */
+    --school-blue: 200 100% 70%;
+    --school-light-blue: 200 100% 85%;
+    --school-yellow: 45 100% 55%;
+    --school-navy: 215 25% 15%;
+    --school-white: 0 0% 98%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--school-blue)), hsl(var(--school-light-blue)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--school-yellow)), hsl(var(--school-blue)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--school-blue) / 0.9), hsl(var(--school-navy)));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
