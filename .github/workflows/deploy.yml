@@ -1,6 +1,7 @@
 name: Build and deploy a headlight infant school React + vite project
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
