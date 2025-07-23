@@ -1,40 +1,63 @@
-name: Build and deploy a headlight infant school React + vite project
+name: Build and Deploy React + Vite Project to GitHub Pages
 
 on:
-  workflow_dispatch:
+  # Trigger on pushes to main branch
   push:
-    branches:
-      - main
+    branches: ["main"]
+  
+  # Allow manual triggering from Actions tab
+  workflow_dispatch:
 
+# Set permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Prevent concurrent deployments
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-deploy:
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
-    # checkout the repository
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    # Setup node js
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-
-      with:
-        node-version: 20
-
-    # Install dependecies
-    - name: Install dependecies
-      run: npm install
-
-    # Build project
-    - name: Build project
-      run: npm run build
-
-    # Deploy to gh pages
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist
-
+      # Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      # Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+      
+      # Build project
+      - name: Build project
+        run: npm run build
+      
+      # Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      # Upload build artifacts
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
